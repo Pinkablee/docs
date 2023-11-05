@@ -1,0 +1,55 @@
+---
+title: 'Configuration Guide'
+---
+
+### joinDelay
+- **Default:** 60 seconds.
+- **Description:** This value must be a number and is represented in seconds. It's used when your server first starts up, holding players in the queue for this set amount of time before letting them load in. This is helpful during server restarts to allow scripts to finish initializing. Anywhere from 30-60 seconds is recommended.
+
+### cooldown
+- **Default:** 3 seconds.
+- **Description:** This value must be a number and is represented in seconds. It's used every time a player connects to your server, processing them before either joining or entering the queue. This helps prevent player spamming and rate limiting. Anywhere from 1-3 seconds is recommended.
+
+### displayQueueInHostName
+- **Default:** true.
+- **Description:** This value is a Boolean, either true or false. If enabled and your server has a queue count greater than 0, it displays the queue count in square brackets in front of your server's name on the server list. For example, [55] Server Name Here.
+
+### maxPlayersToDisplay
+- **Default:** 10.
+- **Description:** This value must be a number. It's used for the "queue list" page, showing the first 10 players in the queue, including their name, discord name, and priority points. It represents how many players in the queue will be shown on this page. If set to 0, the page doesn't display any players. If set to a number greater than 10, you can scroll to view more players. For instance, setting it to 1 shows only the top player in the queue. Showing a maximum of 10 players at a time is recommended.
+
+### consoleInfo
+- **Default:** true.
+- **Description:** This value is a Boolean, either true or false. It determines whether information from the queue is printed/displayed in your server console. This includes player names, priority points, and their position in the queue when new players join, as well as other miscellaneous information. The choice is up to you.
+
+### stackPrio
+- **Default:** true.
+- **Description:** This value is a Boolean, either true or false. It determines whether all available rows of priority points for a player should stack together. If enabled, a player with multiple discord roles with priority points will have those points added up. If disabled, they will receive points from the role with the larger amount.
+
+### discord - requireIdentifier
+- **Default:** true.
+- **Description:** This value is a Boolean, either true or false, allowing you to deny players from connecting if they do not have their discord app open and their account linked to FiveM. The choice is up to you.
+
+### discord - requireInGuild
+- **Default:** true.
+- **Description:** This value is a Boolean, either true or false, allowing you to deny players from connecting if they are not in your discord server. If enabled, it does not require players to have their discord account linked to FiveM to connect; you need to enable the "requireIdentifier" config option for that. The choice is up to you.
+
+### discord - whitelist
+- **Default:** true.
+- **Description:** This value is a Boolean, either true or false, representing a toggle for a simple whitelist system. This system lets you deny or accept connections of specific players based on a designated discord role. If a player has the allowed role, they can connect; otherwise, they will be denied. If enabled, you must fill out the required role's discord role ID under the "whitelistRoleId" config option. The choice is up to you.
+
+### discord - whitelistRoleId
+- **Default:** "1234567890" (placeholder number).
+- **Description:** This value must be a number and is used for the whitelist system explained above. It must be the role ID of a specific discord role that you want to use as the key for the whitelist. If the whitelist is enabled and a player has this role, they can connect; otherwise, they will be denied. The choice is up to you.
+
+### discord - botToken
+- **Default:** Blank.
+- **Description:** This value must be a string. If "discord.enabled" is enabled, it's required. You need to input the bot token of a discord bot in your server, with permissions to view members and roles. Protect your bot token; do not share it with anyone.
+
+### discord - guildId
+- **Default:** Blank.
+- **Description:** This value must be a string. If "discord.enabled" is enabled, it's required. You need to input the guild id of your discord server. Enable developer mode on discord, right-click on your server's avatar, then click "Copy ID." It must be the same guild your bot is in.
+
+### prioRoles
+- **Default:** Two placeholder values.
+- **Description:** This value must be a table, and each role inside must also be a table. It's used to give players priority points through discord roles. If a player has a specific role in your discord, they will receive the set amount of priority points for that role. Each role must contain 3 values: label (string), roleId (number), and points (number). All three values are required, even the label. If you don't want to display a label, it can be left blank.

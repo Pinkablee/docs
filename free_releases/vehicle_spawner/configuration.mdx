@@ -1,0 +1,16 @@
+---
+title: 'Configuration Guide'
+---
+
+### Locations
+The locations value must be a table, and each entry within it represents a spawn location for vehicles. Each entry is itself a table with three required values:
+
+1. marker (number): The in-game marker where players can interact to spawn a vehicle.
+2. vehicleSpawn (number): The location where the vehicle will appear when selected.
+3. heading (number): The direction or heading in which the spawned vehicle will be oriented.
+
+### Vehicles
+The vehicles value must be a table, and each entry within it represents a vehicle model that can be spawned. Each entry is itself a table with two required values:
+
+1. label (string): The text to be displayed in the menu for selecting the vehicle.
+2. model (string): The model name of the vehicle to spawn when selected.

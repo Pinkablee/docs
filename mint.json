@@ -1,0 +1,108 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Docs",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#527be0",
+    "light": "#2658E4",
+    "dark": "#527be0",
+    "anchors": {
+      "from": "#527be0",
+      "to": "#2658E4"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Store",
+      "url": "https://store.pinkable.dev/"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Support",
+    "url": "https://discord.gg/pinkable"
+  },
+  "tabs": [],
+  "anchors": [],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "terms-of-service",
+        "escrow"
+      ]
+    },
+    {
+      "group": "Paid Releases",
+      "pages": [
+        {
+          "group": "Admin Menu",
+          "icon": "tools",
+          "pages": [
+            "paid_releases/admin_menu/info",
+            "paid_releases/admin_menu/features",
+            "paid_releases/admin_menu/installation",
+            "paid_releases/admin_menu/configuration",
+            "paid_releases/admin_menu/exports"
+          ]
+        },
+        {
+          "group": "Gangs",
+          "icon": "flag",
+          "pages": [
+            "paid_releases/gangs/info",
+            "paid_releases/gangs/features",
+            "paid_releases/gangs/installation",
+            "paid_releases/gangs/configuration",
+            "paid_releases/gangs/exports"
+          ]
+        },
+        {
+          "group": "Queue",
+          "icon": "clock",
+          "pages": [
+            "paid_releases/queue/info",
+            "paid_releases/queue/features",
+            "paid_releases/queue/installation",
+            "paid_releases/queue/configuration",
+            "paid_releases/queue/exports"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Free Releases",
+      "pages": [
+        {
+          "group": "Gang Blocks",
+          "icon": "block",
+          "pages": [
+            "free_releases/gang_blocks/info",
+            "free_releases/gang_blocks/features",
+            "free_releases/gang_blocks/installation",
+            "free_releases/gang_blocks/configuration"
+          ]
+        },
+        {
+          "group": "Vehicle Spawner",
+          "icon": "car",
+          "pages": [
+            "free_releases/vehicle_spawner/info",
+            "free_releases/vehicle_spawner/features",
+            "free_releases/vehicle_spawner/installation",
+            "free_releases/vehicle_spawner/configuration"
+          ]
+        }
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/pinkablee",
+    "github": "https://github.com/pinkablee",
+    "website": "https://pinkable.dev/",
+    "discord": "https://discord.gg/pinkable"
+  }
+}

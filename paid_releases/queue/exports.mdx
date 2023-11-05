@@ -1,0 +1,14 @@
+---
+title: 'Exports'
+---
+
+1. **queueCount**: Returns a number that represents the current amount of the queue size.
+
+```lua
+local queue = exports['p-queue']
+
+RegisterCommand('size', function()
+    local connectingCount = queue:queueCount()
+    print(('There are %d players connecting to the server.'):format(connectingCount))
+end)
+```

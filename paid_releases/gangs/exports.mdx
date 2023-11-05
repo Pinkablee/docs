@@ -1,0 +1,31 @@
+---
+title: 'Exports'
+---
+
+### getGang(target: number)
+
+This export function allows you to retrieve a player's gang and rank based on their target (player ID).
+
+**Parameters:**
+
+- target (number): The player ID or target for whom you want to retrieve gang and rank information.
+
+**Return Value:**
+
+- Returns an object with gang and rank information.
+
+**Usage Example:**
+
+```lua
+local gangs = exports['p-gangs']
+
+RegisterCommand('getganginfo', function(source, args, rawCommand)
+    local target = tonumber(args[1]) -- Player ID
+    local gangInfo = gangs.getGang(target)
+
+    if gangInfo then
+        print(('Player %d belongs to the gang: %s and holds the rank: %s'):format(target, gangInfo.gang, gangInfo.rank))
+    else
+        print('Player not found or does not belong to a gang.')
+    end
+end)

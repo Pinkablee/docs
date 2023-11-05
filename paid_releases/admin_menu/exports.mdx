@@ -1,0 +1,16 @@
+---
+title: 'Exports'
+---
+
+1. **adminCount**: Returns the number of currently active administrators in the server.
+
+**Usage Example:**
+
+```lua
+local admin = exports['p-admin']
+
+RegisterCommand('admins', function(source, args, rawCommand)
+    local adminCount = admin:adminCount()
+    print(('There are %d administrators in the server.'):format(adminCount))
+end)
+```

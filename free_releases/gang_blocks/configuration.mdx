@@ -1,0 +1,18 @@
+---
+title: 'Configuration Guide'
+---
+
+### cfg.blocks
+The cfg.blocks value must be a table, where each entry represents a gang block configuration. Gang blocks are used to define specific areas associated with a gang. Each gang block configuration should be a table and must include the following parameters:
+
+- **label (string):** This is the displayed label for the gang block.
+- **color (number):** The color code for the gang block.
+- **radius (number):** The radius of the gang block.
+- **blipLabel (string):** The label for the map blip associated with the gang block.
+- **blipSprite (number):** The sprite ID for the map blip.
+- **blipColor (number):** The color code for the map blip.
+- **zoneSize (number):** The size of the zone.
+- **markerColor (table):** This is a table that includes RGB color values for the marker.
+- **coords (vec3):** The coordinates (x, y, z) that define the location of the gang block.
+
+Each of these parameters is required to define a gang block. Ensure that each entry in the cfg.blocks table adheres to this structure for your gang block configurations.
