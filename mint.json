@@ -40,7 +40,7 @@
       "pages": [
         {
           "group": "Admin Menu",
-          "icon": "tools",
+          "icon": "screwdriver-wrench",
           "pages": [
             "paid_releases/admin_menu/info",
             "paid_releases/admin_menu/features",
