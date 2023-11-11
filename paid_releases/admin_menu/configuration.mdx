@@ -2,20 +2,96 @@
 title: 'Configuration Guide'
 ---
 
-### Screenshot Delay
-- Adjust the frequency of admin screenshots in seconds. After taking a screenshot, a cooldown period will precede the next one. Recommended range: 5-10 seconds.
+Adjust the frequency of admin screenshots in seconds. Cooldown: 5-10 seconds.
+```lua cfg.lua
+cfg.screenshotDelay = 5 -- (type: number)
+```
 
-### Report Delay
-- Set the cooldown duration for player reports in seconds. After submitting a report, there will be a cooldown before making another. Recommended range: 5-10 seconds.
+Set the cooldown for player reports in seconds. Cooldown: 5-10 seconds.
+```lua cfg.lua
+cfg.reportDelay = 5 -- (type: number)
+```
 
-### Console Info (Print to Server Console)
-- Opt to display admin menu information in your server console. This includes player actions such as kicks, bans, unbans, and various other details when banned players attempt to join. Enable (true) or disable (false) this option.
+Display admin menu info in the server console. Enable (true) or disable (false).
+```lua cfg.lua
+cfg.consoleInfo = true -- (type: boolean)
+```
 
-### Discord Bot Token
-- Enter the bot token of a Discord bot within your server. The bot must have permission to view members and roles. This field is mandatory.
+Activate debug mode.
+```lua cfg.lua
+cfg.debug = true -- (type: boolean)
+```
 
-### Discord Guild ID
-- Provide the Guild ID of your Discord server where the bot is active. Ensure the Guild ID matches the server the bot is a member of. This field is mandatory.
+Activate debug mode.
+```lua cfg.lua
+cfg.logs = {
+    kicks = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    bans = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    offlineBans = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    unbans = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    banLengthEdited = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    banReasonEdited = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    reports = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    claimedReports = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    deletedReports = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    freezed = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    staffChat = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    screenshots = {enabled = true, webhook = 'YOUR_WEBHOOK_HERE'},
+    identifiers = {
+        steam = true,
+        license = true,
+        license2 = true,
+        xbox = true,
+        live = true,
+        fivem = true,
+        discord = true
+    }
+} -- (type: table)
+```
 
-### Discord Roles
-- Define player permissions based on Discord roles. Create a table with each role as a separate entry. Players possessing specific roles in your Discord server will be granted corresponding permissions.
+Enter the Discord bot's token. Mandatory field.
+```lua cfg.lua
+cfg.discord.botToken = "YOUR_BOT_TOKEN_HERE" -- (type: string)
+```
+
+Provide the Guild ID of your active Discord server. Mandatory field.
+```lua cfg.lua
+cfg.discord.guildId = "YOUR_GUILD_ID_HERE" -- (type: string)
+```
+
+Define player permissions based on Discord roles.
+```lua cfg.lua
+cfg.discord.roles = {
+    [1012899868966142027] = {
+        immune = true,
+        open = true,
+        kick = true,
+        ban = true,
+        offlineban = true,
+        unban = true,
+        editban = true,
+        teleport = true,
+        spectate = true,
+        freeze = true,
+        screenshot = true,
+        invisibility = true,
+        godmode = true,
+        noclip = true,
+        nametags = true,
+        wipe = true,
+        deletereport = true,
+        claimreport = true,
+        staffchat = true
+    },
+  } -- (type: table)
+```
+
+Provide the Guild ID of your active Discord server. Mandatory field.
+```lua cfg.lua
+cfg.language = {
+    kicked = 'You have been kicked.\n\nKicked By: {ADMIN}\n\nReason: {REASON}\n\nOpen a ticket in our Discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable',
+    banned = 'You have been banned.\n\nDiscord ID: {DISCORD}\nBanned By: {ADMIN}\nExpiration: {EXPIRATION}\n\nReason: {REASON}\n\nOpen a ban appeal ticket in our Discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable',
+    reject = 'You are banned.\n\nDiscord ID: {DISCORD}\nBanned By: {ADMIN}\nExpiration: {EXPIRATION}\n\nReason: {REASON}\n\nOpen a ban appeal ticket in our Discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable',
+    reject_permanent = 'You are banned.\n\nDiscord ID: {DISCORD}\nBanned By: {ADMIN}\nExpiration: Never (Permanent)\n\nReason: %s\n\nOpen a ban appeal ticket in our Discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable'
+} -- (type: table)
+```
