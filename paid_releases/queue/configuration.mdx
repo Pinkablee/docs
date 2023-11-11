@@ -49,16 +49,29 @@ cfg.prioRoles = { -- (type: table) prioRoles: Configuration for priority roles.
 Configuration for adaptive cards with different styles.
 ```lua cfg.lua
 cfg.adaptiveCard = {
-    bannerImage = 'YOUR_SERVER_BANNER_HERE',
-    store_button = {label = 'Visit Store', iconImage = 'https://i.imgur.com/CLrYUTP.png', url = 'YOUR_STORE_LINK_HERE', style = 'default'},
-    discord_button = {label = 'Join Discord', iconImage = 'https://i.imgur.com/EKhzTJa.png', url = 'YOUR_DISCORD_LINK_HERE', style = 'default'},
+    welcome_page = {
+        label = 'Connecting to pinkable.dev',
+        iconImage = 'https://i.imgur.com/3EaZAP1.png',
+        bannerImage = 'https://i.imgur.com/XnHrAJV.png',
+        store_button = {label = 'Visit Store', iconImage = 'https://i.imgur.com/CLrYUTP.png', url = 'https://store.pinkable.dev', style = 'default'},
+        discord_button = {label = 'Join Discord', iconImage = 'https://i.imgur.com/EKhzTJa.png', url = 'https://discord.gg/pinkable', style = 'default'},
+    },
+    main_page = {
+        store_button = {label = 'Visit Store', iconImage = 'https://i.imgur.com/RWuFBNV.png', url = 'https://pinkable.dev/', style = 'default'},
+        discord_button = {label = 'Join Discord', iconImage = 'https://i.imgur.com/ERn1W3t.png', url = 'https://discord.gg/pinkable', style = 'default'}
+    }
 } -- (type: table)
 ```
 
 Custom messages used in Queue system.
 ```lua cfg.lua
 cfg.language = {
-    welcome = 'Welcome, {NAME}, Checking queue information, please wait...',
+    welcome = 'Welcome, {NAME}!\nLoading account information... ({SECONDS}s)🕑',
+    loaded = 'Welcome {NAME}!\n\nAccount information loaded ✔️',
+    joining = 'Checking queue information...',
+    validating = 'Validating identifiers...',
+    validated_identifiers = '{IDENTIFIERS} identifiers found ✔️',
+    validated_tokens = '{TOKENS} tokens found ✔️',
     waiting = 'You are waiting in line to join the server.',
     connecting = 'Total Points: {POINTS}\n\nCurrent Position: [{POSITION}/{QUEUE_SIZE}]\n\nSession Time: {HOURS}h {MINUTES}m {SECONDS}s 🕑\n\nTired of waiting in the queue? Visit our store and donate to skip the line.',
     license_not_found = 'Your Rockstar Social Club account was not found. Make sure you are logged in before connecting.',
