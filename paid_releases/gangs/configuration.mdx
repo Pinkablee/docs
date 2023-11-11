@@ -2,38 +2,91 @@
 title: 'Configuration Guide'
 ---
 
-### Turf War Capture Time
-> Set the time (in seconds) it takes to capture a turf war zone. This defines how long players need to control a zone to capture it.
+Set the time (in seconds) it takes to capture a turf war zone. This defines how long players need to control a zone to capture it.
+```lua cfg.lua
+cfg.captureTime = 180 -- (type: number)
+```
 
-### Capture Cooldown Time
-> Define the cooldown time (in seconds) before the same turf war zone can be captured again. This prevents frequent captures.
+Define the cooldown time (in seconds) before the same turf war zone can be captured again. This prevents frequent captures.
+```lua cfg.lua
+cfg.captureCooldownTime = 300 -- (type: number)
+```
 
-### Empty Zone Cancel Time
-> Specify the time (in seconds) after which an empty turf war zone is automatically canceled. This helps keep the gameplay dynamic.
+Specify the time (in seconds) after which an empty turf war zone is automatically canceled. This helps keep the gameplay dynamic.
+```lua cfg.lua
+cfg.emptyZoneCancelTime = 30 -- (type: number)
+```
 
-### Display Zone Circle
-> Choose whether to display a zone capture circle on the map. Enable or disable this feature based on your preferences.
+Choose whether to display a zone capture circle on the map. Enable or disable this feature based on your preferences.
+```lua cfg.lua
+cfg.displayZoneCircle = true -- (type: boolean)
+```
 
-### Maximum Simultaneous Zones
-> Determine if there is a maximum limit on the number of zones that can be captured simultaneously. Enable or disable this limit.
+Determine if there is a maximum limit on the number of zones that can be captured simultaneously. Enable or disable this limit.
+```lua cfg.lua
+cfg.maxSimultaneousZones = true -- (type: boolean)
+```
 
-### Enable HUD Information
-> Decide whether to enable the display of gang and rank information on players' screens. Customize this to enhance the player experience.
+Decide whether to enable the display of gang and rank information on players' screens. Customize this to enhance the player experience.
+```lua cfg.lua
+cfg.enableHUDInformation = true -- (type: boolean)
+```
 
-### Strike System
-> Configure the strike system. Enable or disable strikes, set the maximum number of strikes, and optionally disable strike management.
+Configure the strike system. Enable or disable strikes, set the maximum number of strikes, and optionally disable strike management.
+```lua cfg.lua
+cfg.strikeSystem = {
+    enabled = true,
+    maxStrikes = 3,
+    strikeManagement = true
+} -- (type: table)
+```
 
-### Turf War Zone Marker Color
-> Set the color of the marker used to indicate turf war zones. Customize the color to match your server's theme.
+Set the color of the marker used to indicate turf war zones. Customize the color to match your server's theme.
+```lua cfg.lua
+cfg.marker = {
+    color = {red = 255, green = 0, blue = 0, alpha = 100}
+} -- (type: table)
+```
 
-### Gang Management Locations
-> Define the locations for gang management areas where specific actions related to gangs take place.
+Define the locations for gang management areas where specific actions related to gangs take place
+```lua cfg.lua
+cfg.management = {
+    {coords = vec3(-1266.956665, -3012.985596, -47.490181)}
+} -- (type: table)
+```
 
-### Turf War Zones
-> Configure turf war zones, including their names, locations, alternate locations, labels, capture distances, and associated rewards.
+Customize the messages used in the Turf Wars system. Adjust messages for zone capture, match ties, successful captures, and more.
+```lua cfg.lua
+cfg.language = {
+    canceled = 'The capture of {ZONE} has been canceled due to lack of participants.',
+    tie = 'The match in {ZONE} has resulted in a tie, with no winners this time..',
+    captured = '{ZONE} has been captured by {WINNER}! Rewards: {AMOUNT}',
+    started = '{ZONE} is currently under capture and will conclude in {TIME}.'
+} -- (type: table)
+```
 
-### Language Customization
-> Customize the messages used in the Turf Wars system. Adjust messages for zone capture, match ties, successful captures, and more.
+Configure turf war zones, including their names, locations, alternate locations, labels, capture distances, and associated rewards
+```lua cfg.lua
+cfg.zones = {
+    ['Legion Square'] = {
+        coords = vec3(197.350174, -935.668274, 31.686773),
+        teleport = vec3(231.571213, -959.170471, 30.330795),
+        label = 'Legion Square',
+        distance = 100.0,
+        rewards = {
+            ['cash'] = 0,
+            ['dcash'] = 300000
+        }
+    }
+} -- (type: table)
+```
 
-### Chat Message Function
-> Understand how the ChatMessage function is used to send chat messages with a custom chat template.
+Understand how the ChatMessage function is used to send chat messages with a custom chat template
+```lua cfg.lua
+function ChatMessage(msg)
+    TriggerClientEvent('chat:addMessage', -1, {
+        template = nil,
+        args = { msg }
+    })
+end -- (type: function)
+```
