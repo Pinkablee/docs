@@ -2,54 +2,72 @@
 title: 'Configuration Guide'
 ---
 
-### joinDelay
-- **Default:** 60 seconds.
-- **Description:** This value must be a number and is represented in seconds. It's used when your server first starts up, holding players in the queue for this set amount of time before letting them load in. This is helpful during server restarts to allow scripts to finish initializing. Anywhere from 30-60 seconds is recommended.
+The time, in seconds, it takes for the queue to load when first initiated.
+```lua cfg.lua
+cfg.joinDelay = 60 -- (type: number)
+```
 
-### cooldown
-- **Default:** 3 seconds.
-- **Description:** This value must be a number and is represented in seconds. It's used every time a player connects to your server, processing them before either joining or entering the queue. This helps prevent player spamming and rate limiting. Anywhere from 1-3 seconds is recommended.
+Set to true to display the queue status in the server's hostname.
+```lua cfg.lua
+cfg.displayQueueInHostName = true -- (type: boolean)
+```
 
-### displayQueueInHostName
-- **Default:** true.
-- **Description:** This value is a Boolean, either true or false. If enabled and your server has a queue count greater than 0, it displays the queue count in square brackets in front of your server's name on the server list. For example, [55] Server Name Here.
+Display queue information on the server console? (enabled by default)
+```lua cfg.lua
+cfg.consoleInfo = true -- (type: boolean)
+```
 
-### maxPlayersToDisplay
-- **Default:** 10.
-- **Description:** This value must be a number. It's used for the "queue list" page, showing the first 10 players in the queue, including their name, discord name, and priority points. It represents how many players in the queue will be shown on this page. If set to 0, the page doesn't display any players. If set to a number greater than 10, you can scroll to view more players. For instance, setting it to 1 shows only the top player in the queue. Showing a maximum of 10 players at a time is recommended.
+Enable Discord authentication on the server console to ensure all data is being retrieved. (enabled by default)
+```lua cfg.lua
+cfg.debug = true -- (type: boolean)
+```
 
-### consoleInfo
-- **Default:** true.
-- **Description:** This value is a Boolean, either true or false. It determines whether information from the queue is printed/displayed in your server console. This includes player names, priority points, and their position in the queue when new players join, as well as other miscellaneous information. The choice is up to you.
+Full points from all roles if true, only highest role's points if false.
+```lua cfg.lua
+cfg.stackPrio = true -- (type: boolean)
+```
 
-### stackPrio
-- **Default:** true.
-- **Description:** This value is a Boolean, either true or false. It determines whether all available rows of priority points for a player should stack together. If enabled, a player with multiple discord roles with priority points will have those points added up. If disabled, they will receive points from the role with the larger amount.
+Configuration for Discord integration.
+```lua cfg.lua
+cfg.discord = {
+    requireIdentifier = true, -- (type: boolean) Require Discord linking?
+    whitelist = false, -- (type: boolean) Enable server whitelist?
+    whitelistRoleId = YOUR_WHITELISTED_ROLE_ID_HERE, -- (type: number) Role for whitelist access.
+    botToken = 'YOUR_BOT_TOKEN_HERE', -- (type: string) Bot token.
+    guildId = 'YOUR_GUILD_ID_HERE', -- (type: string) Discord server ID.
+} -- (type: table)
+```
 
-### discord - requireIdentifier
-- **Default:** true.
-- **Description:** This value is a Boolean, either true or false, allowing you to deny players from connecting if they do not have their discord app open and their account linked to FiveM. The choice is up to you.
+Configuration for priority roles.
+```lua cfg.lua
+cfg.prioRoles = { -- (type: table) prioRoles: Configuration for priority roles.
+    {label = 'Founder', roleId = ROLE_ID_HERE, points = 10000}, -- (type: table) Founder role configuration.
+    {label = 'Head Developer', roleId = ROLE_ID_HERE, points = 5000}, -- (type: table) Head Developer role configuration.
+} -- (type: table)
+```
 
-### discord - requireInGuild
-- **Default:** true.
-- **Description:** This value is a Boolean, either true or false, allowing you to deny players from connecting if they are not in your discord server. If enabled, it does not require players to have their discord account linked to FiveM to connect; you need to enable the "requireIdentifier" config option for that. The choice is up to you.
+Configuration for adaptive cards with different styles.
+```lua cfg.lua
+cfg.adaptiveCard = {
+    bannerImage = 'YOUR_SERVER_BANNER_HERE',
+    store_button = {label = 'Visit Store', iconImage = 'https://i.imgur.com/CLrYUTP.png', url = 'YOUR_STORE_LINK_HERE', style = 'default'},
+    discord_button = {label = 'Join Discord', iconImage = 'https://i.imgur.com/EKhzTJa.png', url = 'YOUR_DISCORD_LINK_HERE', style = 'default'},
+} -- (type: table)
+```
 
-### discord - whitelist
-- **Default:** true.
-- **Description:** This value is a Boolean, either true or false, representing a toggle for a simple whitelist system. This system lets you deny or accept connections of specific players based on a designated discord role. If a player has the allowed role, they can connect; otherwise, they will be denied. If enabled, you must fill out the required role's discord role ID under the "whitelistRoleId" config option. The choice is up to you.
-
-### discord - whitelistRoleId
-- **Default:** "1234567890" (placeholder number).
-- **Description:** This value must be a number and is used for the whitelist system explained above. It must be the role ID of a specific discord role that you want to use as the key for the whitelist. If the whitelist is enabled and a player has this role, they can connect; otherwise, they will be denied. The choice is up to you.
-
-### discord - botToken
-- **Default:** Blank.
-- **Description:** This value must be a string. If "discord.enabled" is enabled, it's required. You need to input the bot token of a discord bot in your server, with permissions to view members and roles. Protect your bot token; do not share it with anyone.
-
-### discord - guildId
-- **Default:** Blank.
-- **Description:** This value must be a string. If "discord.enabled" is enabled, it's required. You need to input the guild id of your discord server. Enable developer mode on discord, right-click on your server's avatar, then click "Copy ID." It must be the same guild your bot is in.
-
-### prioRoles
-- **Default:** Two placeholder values.
-- **Description:** This value must be a table, and each role inside must also be a table. It's used to give players priority points through discord roles. If a player has a specific role in your discord, they will receive the set amount of priority points for that role. Each role must contain 3 values: label (string), roleId (number), and points (number). All three values are required, even the label. If you don't want to display a label, it can be left blank.
+Custom messages used in Queue system.
+```lua cfg.lua
+cfg.language = {
+    welcome = 'Welcome, {NAME}, Checking queue information, please wait...',
+    waiting = 'You are waiting in line to join the server.',
+    connecting = 'Total Points: {POINTS}\n\nCurrent Position: [{POSITION}/{QUEUE_SIZE}]\n\nSession Time: {HOURS}h {MINUTES}m {SECONDS}s 🕑\n\nTired of waiting in the queue? Visit our store and donate to skip the line.',
+    license_not_found = 'Your Rockstar Social Club account was not found. Make sure you are logged in before connecting.',
+    discord_not_found = 'Your Discord account was not found. Ensure that Discord is open and linked to Cfx.re before connecting.',
+    duplicate_license = 'Another player with the same license (License: {LICENSE}) as you was found in the server.',
+    checking_whitelist = 'Checking whitelist status...',
+    not_whitelisted = 'You are not whitelisted. You must have the required Discord role to connect.',
+    not_in_discord = 'You need to be in our Discord server to join. discord.gg/pinkable.',
+    error_occurred = 'An error occurred while processing your queue information. Please reconnect.',
+    restart = 'Unable to join at this time. The server is scheduled to restart in 1 minute. Please wait until the restart is complete before reconnecting.',
+} -- (type: table)
+```
