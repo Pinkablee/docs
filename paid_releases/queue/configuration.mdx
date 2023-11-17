@@ -65,22 +65,21 @@ cfg.adaptiveCard = {
 
 Custom messages used in Queue system.
 ```lua cfg.lua
-cfg.language = {
-    welcome = 'Welcome, {NAME}!\nLoading account information... ({SECONDS}s)🕑',
-    loaded = 'Welcome {NAME}!\n\nAccount information loaded ✔️',
-    joining = 'Checking queue information...',
-    validating = 'Validating identifiers...',
-    validated_identifiers = '{IDENTIFIERS} identifiers found ✔️',
-    validated_tokens = '{TOKENS} tokens found ✔️',
-    waiting = 'You are waiting in line to join the server.',
-    connecting = 'Total Points: {POINTS}\n\nCurrent Position: [{POSITION}/{QUEUE_SIZE}]\n\nSession Time: {HOURS}h {MINUTES}m {SECONDS}s 🕑\n\nTired of waiting in the queue? Visit our store and donate to skip the line.',
-    license_not_found = 'Your Rockstar Social Club account was not found. Make sure you are logged in before connecting.',
-    discord_not_found = 'Your Discord account was not found. Ensure that Discord is open and linked to Cfx.re before connecting.',
-    duplicate_license = 'Another player with the same license (License: {LICENSE}) as you was found in the server.',
-    checking_whitelist = 'Checking whitelist status...',
-    not_whitelisted = 'You are not whitelisted. You must have the required Discord role to connect.',
-    not_in_discord = 'You need to be in our Discord server to join. discord.gg/pinkable.',
-    error_occurred = 'An error occurred while processing your queue information. Please reconnect.',
-    restart = 'Unable to join at this time. The server is scheduled to restart in 1 minute. Please wait until the restart is complete before reconnecting.',
+cfg.strings = {
+    ['welcome'] = 'Welcome, {NAME}!\nLoading account information... ({SECONDS}s)🕑',
+    ['loaded'] = 'Welcome, {NAME}! \n\nAccount information successfully loaded ✔️',
+    ['reviewing'] = 'Reviewing queue details...',
+    ['located_identifiers'] = '{IDENTIFIERS} identifiers located ✔️',
+    ['located_tokens'] = '{TOKENS} tokens located ✔️',
+    ['waiting'] = 'You are currently in a queue, awaiting your turn to join the server.',
+    ['connecting'] = 'Total Points: {POINTS}\n\nCurrent Position: [{POSITION}/{QUEUE_SIZE}]\n\nSession Time: {HOURS}h {MINUTES}m {SECONDS}s 🕑\n\nTired of waiting in the queue? Visit our store and donate to skip the line.',
+    ['license_not_found'] = 'Rockstar Social Club account not located. Please ensure you are logged in before attempting to connect.',
+    ['discord_not_found'] = 'Your Discord account was not found. Ensure that Discord is open and linked to Cfx.re before connecting.',
+    ['duplicate_license'] = 'Another player sharing the same license (License: {LICENSE}) as you has been detected on the server.',
+    ['verifying_whitelist'] = 'Verifying whitelist status...',
+    ['not_whitelisted'] = 'Access denied. Connection requires whitelisting, and possession of the requisite Discord role is mandatory.',
+    ['not_in_discord'] = 'To join, please ensure that you are a member of our Discord server: discord.gg/pinkable.',
+    ['error_occurred'] = 'A hiccup in processing your queue information has occurred. Kindly reconnect to address this issue.',
+    ['restart'] = 'Currently, joining is not possible as the server is slated for a restart in 1 minute. Kindly await the completion of the restart process before attempting to reconnect.',
 } -- (type: table)
 ```
