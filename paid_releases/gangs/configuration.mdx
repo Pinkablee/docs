@@ -37,7 +37,7 @@ Configure the strike system. Enable or disable strikes, set the maximum number o
 cfg.strikeSystem = {
     enabled = true,
     maxStrikes = 3,
-    strikeManagement = true
+    disableManagment = true
 } -- (type: table)
 ```
 
@@ -57,11 +57,11 @@ cfg.management = {
 
 Customize the messages used in the Turf Wars system. Adjust messages for zone capture, match ties, successful captures, and more.
 ```lua cfg.lua
-cfg.language = {
-    canceled = 'The capture of {ZONE} has been canceled due to lack of participants.',
-    tie = 'The match in {ZONE} has resulted in a tie, with no winners this time..',
-    captured = '{ZONE} has been captured by {WINNER}! Rewards: {AMOUNT}',
-    started = '{ZONE} is currently under capture and will conclude in {TIME}.'
+cfg.strings = {
+    ['canceled'] = 'The capture of {ZONE} has been canceled due to lack of participants.',
+    ['tie'] = 'The match in {ZONE} has resulted in a tie, with no winners this time..',
+    ['captured'] = '{ZONE} has been captured by {WINNER}! Rewards: {AMOUNT}',
+    ['started'] = '{ZONE} is currently under capture and will conclude in {TIME}.'
 } -- (type: table)
 ```
 
