@@ -62,36 +62,40 @@ cfg.discord.guildId = "YOUR_GUILD_ID_HERE" -- (type: string)
 Define player permissions based on Discord roles.
 ```lua cfg.lua
 cfg.discord.roles = {
-    [YOUR_ROLEID_HERE] = {
-        immune = true,
-        open = true,
-        kick = true,
-        ban = true,
-        offlineban = true,
-        unban = true,
-        editban = true,
-        teleport = true,
-        spectate = true,
-        freeze = true,
-        screenshot = true,
-        invisibility = true,
-        godmode = true,
-        noclip = true,
-        nametags = true,
-        wipe = true,
-        deletereport = true,
-        claimreport = true,
-        staffchat = true
-    },
-  } -- (type: table)
+        {
+            roleId = YOUR_ROLEID_HERE, 
+            perms = {
+                immune = true, 
+                open = true, 
+                kick = true, 
+                ban = true, 
+                offlineban = true, 
+                unban = true, 
+                editban = true, 
+                teleport = true, 
+                spectate = true, 
+                freeze = true, 
+                screenshot = true, 
+                invisibility = true, 
+                godmode = true, 
+                noclip = true, 
+                nametags = true, 
+                wipe = true, 
+                deletereport = true, 
+                claimreport = true, 
+                staffchat = true
+            }
+        },
+    }
+} -- (type: table)
 ```
 
 Admin Menu Language.
 ```lua cfg.lua
-cfg.language = {
-    kicked = 'You have been kicked.\n\nKicked By: {ADMIN}\n\nReason: {REASON}\n\nOpen a ticket in our Discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable',
-    banned = 'You have been banned.\n\nDiscord ID: {DISCORD}\nBanned By: {ADMIN}\nExpiration: {EXPIRATION}\n\nReason: {REASON}\n\nOpen a ban appeal ticket in our Discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable',
-    reject = 'You are banned.\n\nDiscord ID: {DISCORD}\nBanned By: {ADMIN}\nExpiration: {EXPIRATION}\n\nReason: {REASON}\n\nOpen a ban appeal ticket in our Discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable',
-    reject_permanent = 'You are banned.\n\nDiscord ID: {DISCORD}\nBanned By: {ADMIN}\nExpiration: Never (Permanent)\n\nReason: %s\n\nOpen a ban appeal ticket in our Discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable'
+cfg.strings = {
+    ['kicked'] = 'You have been kicked.\n\nKicked By: {ADMIN}\n\nReason: {REASON}\n\nOpen a ticket in our discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable',
+    ['banned'] = 'You have been banned.\n\nDiscord ID: {DISCORD}\nBanned By: {ADMIN}\nExpiration: {EXPIRATION}\n\nReason: {REASON}\n\nOpen a ban appeal ticket in our discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable',
+    ['reject'] = 'You are banned.\n\nDiscord ID: {DISCORD}\nBanned By: {ADMIN}\nExpiration: {EXPIRATION}\n\nReason: {REASON}\n\nOpen a ban appeal ticket in our discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable',
+    ['reject_permanent'] = 'You are banned.\n\nDiscord ID: {DISCORD}\nBanned By: {ADMIN}\nExpiration: Never (Permanent)\n\nReason: %s\n\nOpen a ban appeal ticket in our discord if you feel this was a mistake.\n\nhttps://discord.gg/pinkable'
 } -- (type: table)
 ```
