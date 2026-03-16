@@ -31,11 +31,11 @@
         {
           "anchor": "Store",
           "href": "https://store.pinkable.dev",
-          "icon": "cart-shopping"
+          "icon": "building-storefront"
         },
         {
           "anchor": "Support",
-          "href": "https://pinkable.dev/support",
+          "href": "https://discord.gg/pinkable",
           "icon": "book-open-cover"
         },
         {
