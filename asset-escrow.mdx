@@ -1,0 +1,53 @@
+---
+title: "Resource Protection (Asset Escrow)"
+description: "Understanding how encrypted FiveM resources and licensing work"
+---
+
+pinkable.dev resources are distributed using **FiveM Asset Escrow**, a protection system developed by **Cfx.re** that secures paid resources and ensures they can only run on authorized servers.
+
+With this system, critical parts of a script are encrypted and tied to the FiveM account that purchased the asset. This prevents unauthorized redistribution while allowing servers that own the resource to run it normally.
+
+## Overview
+
+Asset Escrow protects developer resources through encryption and account-based licensing. When a server starts a protected resource, FiveM automatically verifies ownership before allowing it to run.
+
+The process works as follows:
+
+1. **Protected Files**  
+   Important files inside the resource are encrypted and compiled into a protected asset. These files cannot be viewed, modified, or extracted, and are only executed internally by the FiveM runtime.
+
+2. **Ownership Verification**  
+   When the resource starts, FiveM checks the server's **Cfx.re license key** through the [Keymaster](https://keymaster.fivem.net). The resource will only run if the license key belongs to the same FiveM account that owns the asset.
+
+3. **Purchasing Resources**  
+   When purchasing a resource, the asset is granted to the FiveM account used during checkout. Your server must run with a license key generated from that same account.
+
+<Info>
+  **Server requirement:** Asset Escrow resources require FiveM server build **5181 or newer**.  
+  If you encounter errors such as "Failed to load script" or "Error parsing script," update your server artifacts using the official FiveM documentation.
+</Info>
+
+## Important Notes
+
+- **Account Matching**  
+  The FiveM account that owns the purchased resource must also be the account that generated the server's license key.
+
+- **Managing Your Assets**  
+  Purchased resources can be viewed, downloaded, and transferred through the Keymaster asset management page. You will also receive a download link via email after completing a purchase.
+
+<Card title="Manage Purchased Assets" href="https://keymaster.fivem.net/asset-grants" icon="key">
+  Access your purchased resources, download them again, or transfer ownership to another account.
+</Card>
+
+## Common Issues
+
+| Issue | Resolution |
+|------|------------|
+| **Missing entitlement / lack of ownership** | The server license key belongs to a different FiveM account than the one that owns the asset. Use the correct key or transfer the asset through Keymaster. |
+| **Protected resource verification failed** | This usually means the resource files were copied incorrectly. Ensure all hidden files (including `.fxap`) are present and re-download the asset from Keymaster if necessary. |
+
+## Additional Information
+
+<Card title="Official Asset Escrow Documentation" href="https://forum.cfx.re/t/introducing-asset-escrow-for-your-resources/4777151" icon="book">
+  Read the official explanation and FAQ from the Cfx.re team.
+</Card>

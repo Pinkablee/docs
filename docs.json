@@ -1,0 +1,85 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "pinkable.dev Documentation",
+  "description": "Official documentation for pinkable.dev FiveM resources, guides, and development tools.",
+  "colors": {
+    "primary": "#ff1e39",
+    "light": "#ff3a52",
+    "dark": "#b01227"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              "index",
+              "asset-escrow",
+              "support",
+              "faq"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Store",
+          "href": "https://store.pinkable.dev",
+          "icon": "cart-shopping"
+        },
+        {
+          "anchor": "Support",
+          "href": "https://pinkable.dev/support",
+          "icon": "book-open-cover"
+        },
+        {
+          "anchor": "Discord",
+          "href": "https://discord.gg/pinkable",
+          "icon": "discord"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Email support",
+        "href": "mailto:support@pinkable.dev"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Website",
+      "href": "https://pinkable.dev"
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
+  },
+  "footer": {
+    "socials": {
+      "discord": "https://discord.gg/pinkable",
+      "github": "https://github.com/pinkablee",
+      "website": "https://pinkable.dev"
+    }
+  }
+}
