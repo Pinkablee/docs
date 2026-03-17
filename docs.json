@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "pinkable.dev Documentation",
+  "name": "pinkable.dev",
   "description": "Official documentation for pinkable.dev FiveM resources, guides, and development tools.",
   "colors": {
     "primary": "#ff1e39",
