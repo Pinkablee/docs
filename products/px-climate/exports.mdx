@@ -22,49 +22,41 @@ px_climate exposes a small set of exports for retrieving the current synced envi
 
 Use the exports object from px_climate to access the current environment state:
 
+```lua
 local climate = exports.px_climate
 
 local weather = climate:getWeatherType()
 local hour, minute, second = climate:getLATime()
 local formatted = climate:getLATimeFormatted()
 
-You can also retrieve everything at once:
-
+-- Retrieve everything at once
 local data = exports.px_climate:getWeatherAndTime()
 
-data.weather     → EXTRASUNNY, RAIN, etc  
-data.hour        → 0–23  
-data.minute  
-data.second  
-data.formatted   → 12-hour formatted string  
+-- data.weather   -> EXTRASUNNY, RAIN, etc
+-- data.hour      -> 0-23
+-- data.minute
+-- data.second
+-- data.formatted -> 12-hour formatted string
 
-Returned structure:
+-- Returned structure
+-- weather = "CLEAR"
+-- hour = 14
+-- minute = 32
+-- second = 10
+-- formatted = "2:32PM"
 
-weather = "CLEAR"  
-hour = 14  
-minute = 32  
-second = 10  
-formatted = "2:32PM"
+-- Notes
+-- All values are synced from the server using GlobalState.
+-- Exports always return the latest known state.
+-- Safe to call at any time, including during startup fallback.
+-- No dependency on client-side state.
 
----
+-- Events
 
-## Notes
-
-All values are synced from the server using GlobalState.  
-Exports always return the latest known state.  
-Safe to call at any time, including during startup fallback.  
-No dependency on client-side state.
-
----
-
-## Events
-
-px_climate also provides a request/response event for client-side usage.
-
-Request:  
+-- Request
 TriggerServerEvent('px_climate:requestWeatherAndTime')
 
-Response:  
-RegisterNetEvent('px_climate:responseWeatherAndTime', function(data)  
-    print(data.weather, data.formatted)  
+-- Response
+RegisterNetEvent('px_climate:responseWeatherAndTime', function(data)
+    print(data.weather, data.formatted)
 end)
