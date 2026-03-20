@@ -26,18 +26,18 @@
           {
             "group": "Vehicle Spawner",
             "pages": [
-              "products/px-spawn/configuration",
-              "products/px-spawn/overview",
-              "products/px-spawn/setup"
+              "px-spawn/configuration",
+              "px-spawn/overview",
+              "px-spawn/setup"
             ]
           },
           {
             "group": "Climate Control",
             "pages": [
-              "products/px-climate/configuration",
-              "products/px-climate/exports",
-              "products/px-climate/overview",
-              "products/px-climate/setup"
+              "px-climate/configuration",
+              "px-climate/exports",
+              "px-climate/overview",
+              "px-climate/setup"
             ]
           }
         ]
