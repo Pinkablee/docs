@@ -34,10 +34,10 @@
           {
             "group": "Climate Control",
             "pages": [
-              "products/px-spawn/configuration",
+              "products/px-climate/configuration",
               "products/px-climate/exports",
-              "products/px-spawn/overview",
-              "products/px-spawn/setup"
+              "products/px-climate/overview",
+              "products/px-climate/setup"
             ]
           }
         ]
