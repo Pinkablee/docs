@@ -1,0 +1,41 @@
+---
+title: "Overview"
+description: "Overview of the px_climate system"
+---
+
+px_climate is a real-time environment system designed to handle weather and time without manual input or constant adjustments.
+
+It uses real-world data tied to your configured location to determine what the environment should look like, then translates that into GTA weather states and applies it across your server. Everything is handled centrally, so every player sees the same conditions at all times.
+
+Time is calculated using a proper timezone instead of hardcoded values, which means it stays accurate, accounts for daylight saving changes, and never drifts out of sync.
+
+![px_climate preview](/images/climate.png)
+
+<Note>
+  px_climate does not rely on client-side logic. Weather and time are calculated on the server and synced globally, ensuring consistent behavior for every player.
+</Note>
+
+## What it handles
+
+- Live weather updates based on real-world conditions  
+- Continuous time syncing using a real timezone  
+- Smooth weather transitions without abrupt changes  
+- Automatic recovery if external data fails  
+- Optional fixed weather mode for controlled environments  
+
+## Why use it
+
+Most weather systems either rely on static configs or loosely synced client updates, which can lead to mismatched environments or time drifting between players.
+
+px_climate avoids that entirely by keeping all calculations server-side and only pushing finalized values. This keeps everything aligned, predictable, and stable regardless of player count or session length.
+
+## Navigation
+
+<CardGroup cols={2}>
+  <Card title="Configuration" icon="sliders" href="/climate/configuration">
+    Control how the system behaves and updates.
+  </Card>
+  <Card title="Exports" icon="code" href="/climate/exports">
+    Retrieve weather and time data in other resources.
+  </Card>
+</CardGroup>

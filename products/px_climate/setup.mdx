@@ -1,0 +1,71 @@
+---
+title: "Setup"
+description: "How to set up px_climate on your server"
+---
+
+Getting px_climate running is straightforward and does not require any complex setup.
+
+## Requirements
+
+- A working FiveM server  
+- Basic access to your server files and `server.cfg`  
+
+No external dependencies, frameworks, or API keys are required.
+
+---
+
+## Setup
+
+1. Download the `px_climate` resource.
+
+2. Place the folder into your server’s resources directory.
+
+   Example structure:  
+   resources/px_climate
+
+3. Open your `server.cfg` and add the resource:
+
+   ensure px_climate
+
+4. Restart your server or run a refresh and start the resource manually.
+
+---
+
+## Configuration
+
+All behavior is controlled inside:
+
+config/shared.lua
+
+This includes location settings, update intervals, and optional weather overrides.
+
+The default values are already set for a working environment, so you can run the resource immediately without changing anything.
+
+---
+
+## How it starts
+
+When the resource loads:
+
+- A fallback weather state is applied instantly  
+- The system begins fetching real-world weather data  
+- Time sync initializes using your configured timezone  
+- Clients automatically receive synced weather and time  
+
+No manual interaction is needed after startup.
+
+---
+
+## Troubleshooting
+
+If the resource does not behave as expected:
+
+- Make sure the resource name is exactly `px_climate`  
+- Confirm it is started after any core dependencies  
+- Check your server console for debug logs (enable Debug in config if needed)  
+
+---
+
+## Next step
+
+Adjust behavior and fine-tune settings in the Configuration section.

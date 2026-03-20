@@ -1,0 +1,46 @@
+---
+title: "Overview"
+description: "Overview of the px_spawn system"
+---
+
+px_spawn is a lightweight vehicle spawning system built around clean interaction and fast access to predefined vehicles.
+
+Instead of relying on commands or complicated menus, players interact with physical locations in the world. When they approach a configured point, a simple prompt appears, allowing them to open a structured menu and select a vehicle instantly.
+
+The system is designed to feel smooth and intentional. Vehicles are spawned at controlled positions, validated before creation, and handled with proper setup such as engine state, seating, and cleanup behavior.
+
+![px_spawn preview](/images/spawn.png)
+
+<Note>
+  px_spawn runs entirely client-side and uses ox_lib for interaction, menus, notifications, and UI handling. All logic is handled locally to keep the experience responsive and fluid.
+</Note>
+
+## What it does
+
+- Location-based vehicle spawning with clean interaction flow  
+- Context menu selection using a predefined vehicle list  
+- Smart spawn validation to prevent blocked or invalid spawns  
+- Optional automatic seating, engine start, and cleanup  
+- Fully configurable locations and vehicle options  
+
+## Use cases
+
+px_spawn can be used in a variety of ways depending on how you configure it.
+
+- Public vehicle spawners around the map  
+- Staff or admin spawn menus  
+- Job-based vehicle access points  
+- Test drive or showcase systems  
+
+Everything is controlled through config, so the same resource can be adapted to multiple purposes without changing the core logic.
+
+## Navigation
+
+<CardGroup cols={2}>
+  <Card title="Configuration" icon="sliders" href="/spawn/configuration">
+    Adjust interaction, vehicles, and spawn behavior.
+  </Card>
+  <Card title="Exports" icon="code" href="/spawn/exports">
+    Integrate spawning logic into other systems.
+  </Card>
+</CardGroup>

@@ -22,6 +22,23 @@
               "support",
               "faq"
             ]
+          },
+          {
+            "group": "Vehicle Spawner",
+            "pages": [
+              "products/px-spawn/configuration",
+              "products/px-spawn/overview",
+              "products/px-spawn/setup"
+            ]
+          },
+          {
+            "group": "Climate Control",
+            "pages": [
+              "products/px-spawn/configuration",
+              "products/px-climate/exports",
+              "products/px-spawn/overview",
+              "products/px-spawn/setup"
+            ]
           }
         ]
       }
@@ -29,14 +46,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Store",
-          "href": "https://store.pinkable.dev",
-          "icon": "store"
+          "anchor": "Website",
+          "href": "https://pinkable.dev",
+          "icon": "globe"
         },
         {
           "anchor": "Support",
           "href": "https://discord.gg/pinkable",
-          "icon": "book-open-cover"
+          "icon": "headset"
         },
         {
           "anchor": "Discord",
@@ -54,7 +71,7 @@
     "links": [
       {
         "label": "Email support",
-        "href": "mailto:support@pinkable.dev"
+        "href": "mailto:pinkable@hurt.gg"
       }
     ],
     "primary": {

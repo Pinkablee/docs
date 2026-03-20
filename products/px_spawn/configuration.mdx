@@ -1,0 +1,198 @@
+---
+title: "Configuration"
+description: "Adjust px_spawn behavior, interaction, and vehicle spawning settings"
+---
+
+px_spawn is configured through a single client config file that controls the full interaction flow, menu behavior, marker appearance, and vehicle spawn handling.
+
+All settings are located in:
+
+config/client.lua
+
+Once the resource is running, this file is where you customize how the spawner looks and behaves in-game.
+
+---
+
+## Overview
+
+The config is split into a few main sections:
+
+- General debug behavior
+- Text UI prompt settings
+- Interaction distance and keybind settings
+- Marker appearance
+- Vehicle spawn behavior
+- Menu settings
+- Notification text
+- Spawn locations
+- Vehicle list
+
+This keeps the resource simple to adjust without needing to edit the main logic.
+
+---
+
+## General
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| Debug | false | Enables debug logging in the console for spawn activity and troubleshooting. |
+
+When enabled, the script prints formatted messages for things like successful vehicle spawns.
+
+---
+
+## Text UI
+
+These settings control the ox_lib text prompt shown when a player is close enough to interact with a spawner location.
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| TextUI.icon | car | Icon shown inside the interaction prompt. |
+| TextUI.position | left-center | Screen position of the prompt. |
+| TextUI.prompt | [E] Open Vehicle Spawner | Text displayed when the player can open the menu. |
+
+The prompt only appears when the player is within the configured interaction range.
+
+---
+
+## Interaction
+
+These values control how close a player needs to be to interact and when the marker system becomes active.
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| Interaction.key | 38 | Input key used to open the spawner menu. |
+| Interaction.maxDistance | 2.0 | Distance required to interact and open the menu. |
+| Interaction.markerDistance | 12.0 | Distance at which the location point becomes active and begins drawing logic. |
+
+This lets you control both the visible marker range and the actual usable interaction range separately.
+
+---
+
+## Marker Settings
+
+The marker section controls the world marker drawn at each configured spawner location.
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| Marker.enabled | true | Enables or disables the world marker entirely. |
+| Marker.type | 2 | GTA marker type used at the location. |
+| Marker.scale | vec3(0.45, 0.45, 0.45) | Size of the marker in the world. |
+| Marker.color.r | 255 | Red value for the marker color. |
+| Marker.color.g | 255 | Green value for the marker color. |
+| Marker.color.b | 255 | Blue value for the marker color. |
+| Marker.color.a | 160 | Alpha value for marker transparency. |
+| Marker.bobUpAndDown | false | Controls whether the marker bobs up and down. |
+| Marker.faceCamera | true | Makes the marker face the player camera. |
+| Marker.rotate | false | Controls whether the marker rotates. |
+
+If you do not want any world marker at all, set Marker.enabled to false.
+
+---
+
+## Spawn Behavior
+
+This section controls what happens after a vehicle is created.
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| VehicleSpawn.clearSpawnArea | true | Prevents spawning if another vehicle is blocking the spawn point. |
+| VehicleSpawn.warpIntoVehicle | true | Automatically places the player into the driver seat after spawn. |
+| VehicleSpawn.startEngine | true | Starts the engine immediately after the vehicle is created. |
+| VehicleSpawn.radioOff | true | Disables the vehicle radio and sets the station to off. |
+| VehicleSpawn.setAsMissionEntity | true | Marks the spawned vehicle as a mission entity. |
+| VehicleSpawn.keys | false | Reserved for custom keys integration if your server uses one. |
+| VehicleSpawn.deletePreviousSpawn | false | Deletes the last vehicle spawned by this resource before creating a new one. |
+
+These options allow the spawner to behave more like a utility tool, a public garage, or a staff-only spawn system depending on your setup.
+
+---
+
+## Menu Settings
+
+The menu section controls the ox_lib context menu itself.
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| Menu.id | vehicle_spawner | Internal context menu identifier used by ox_lib. |
+| Menu.title | Vehicle Spawner | Title shown at the top of the menu. |
+| Menu.optionDescription | Spawn this vehicle at the selected location. | Description shown for each vehicle option. |
+
+Each configured vehicle is automatically converted into a menu option using these settings.
+
+---
+
+## Notification Text
+
+These values define the messages shown when something succeeds or fails.
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| Notifications.invalidModel | The selected vehicle model is invalid. | Shown when a configured model cannot be requested or is not a valid vehicle. |
+| Notifications.blockedSpawn | The spawn point is currently blocked. | Shown when another vehicle is occupying the spawn area. |
+| Notifications.spawnFailed | The vehicle could not be created. | Shown when CreateVehicle fails. |
+| Notifications.alreadyOpen | The vehicle spawner is already open. | Reserved message for menu state handling. |
+
+You can rewrite these messages to better match your server style.
+
+---
+
+## Locations
+
+The Locations section defines where players can open the spawner and where vehicles actually appear.
+
+Each entry contains:
+
+- A label used as the menu title for that location
+- Marker coordinates where the player interacts
+- Spawn coordinates where the vehicle is created
+
+Example structure:
+
+A location uses one point for interaction and one separate position for the spawned vehicle. This means the menu can be opened in one spot while the vehicle appears in a cleaner nearby spawn area.
+
+You can add as many locations as needed.
+
+---
+
+## Vehicles
+
+The Vehicles section controls what options appear inside the spawner menu.
+
+Each vehicle entry contains:
+
+- A label shown in the menu
+- A model name or hash used for spawning
+
+Every configured vehicle becomes a selectable context option automatically.
+
+This makes it easy to build different spawner lists without changing the actual script logic.
+
+---
+
+## How It Works
+
+When a player enters the configured point range, the marker can be drawn and the interaction prompt becomes available.
+
+If the player presses the configured key inside the usable distance, px_spawn opens an ox_lib context menu using the vehicles defined in config.
+
+When a vehicle is selected, the script:
+
+- Validates the model
+- Checks whether the spawn point is blocked
+- Deletes the previous spawned vehicle if that option is enabled
+- Creates the new vehicle
+- Applies post-spawn settings like engine state, radio state, and mission entity handling
+- Optionally warps the player into the driver seat
+
+If something fails during that process, the spawn is cancelled cleanly and a notification is shown instead.
+
+---
+
+## Notes
+
+px_spawn is fully client-driven and built around ox_lib interaction, text UI, notifications, context menus, and point handling.
+
+The resource is intentionally lightweight and keeps all vehicle selection logic inside the config so it can be expanded easily for different locations or server use cases.
+
+It can be used for public vehicle spawners, staff tools, job vehicle menus, test drive systems, or any other simple spawn utility.

@@ -1,0 +1,103 @@
+---
+title: "Configuration"
+description: "Customize px_climate behavior and environment settings"
+---
+
+px_climate is designed to be plug-and-play with minimal setup.
+
+All configuration is handled through:
+
+config/shared.lua
+
+This file controls how weather is fetched, how time is calculated, and how updates are synced across players.
+
+Once installed, simply start the resource:
+
+ensure px_climate
+
+Everything else is handled automatically by the system.
+
+---
+
+## Core Settings
+
+These values define how px_climate pulls and syncs environment data.
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| Latitude | 34.0522 | Real-world latitude used for weather data requests. |
+| Longitude | -118.2437 | Real-world longitude used alongside latitude. |
+| Timezone | America/Los_Angeles | Timezone used for calculating in-game time (includes DST automatically). |
+| FetchIntervalMinutes | 10 | How often the server fetches updated weather data from the API. |
+| BroadcastIntervalMs | 5000 | How often weather and time are pushed to all clients. |
+| WeatherTransitionSeconds | 15.0 | Duration of smooth weather transitions on the client. |
+
+---
+
+## Weather Mode
+
+px_climate supports both real-time weather and fully locked environments.
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| LockedWeather | '' | Forces a static weather type when set. Leave empty to use live data. |
+
+When a value is provided (e.g. `CLEAR`, `RAIN`, `THUNDER`), the system will:
+
+- Skip all API requests  
+- Continuously apply the selected weather  
+- Keep the environment fully consistent  
+
+---
+
+## How It Works
+
+The system runs entirely server-side and syncs everything using `GlobalState`.
+
+### Weather Flow
+- Requests weather data from Open-Meteo using your configured location  
+- Converts real-world weather codes into GTA weather types  
+- Only updates when the weather actually changes  
+
+### Time Flow
+- Uses real-time Unix timestamps with timezone offsets  
+- Calculates Los Angeles time dynamically  
+- Syncs time to all clients with no drift  
+
+### Client Sync
+- Clients listen for state changes (`ws_weather`, `ws_clock`)  
+- Weather transitions smoothly using native functions  
+- Time updates continuously without needing constant server spam  
+
+---
+
+## Fallback Behavior
+
+If the API fails or returns invalid data:
+
+- The last known weather is preserved  
+- No invalid states are applied  
+- The system retries automatically on the next interval  
+
+On initial startup, a safe fallback weather is applied to avoid empty states.
+
+---
+
+## Performance
+
+px_climate is designed to stay lightweight at all times.
+
+- No constant heavy loops  
+- Minimal network usage (interval-based syncing)  
+- Only updates when values change  
+- Fully server-driven logic  
+
+---
+
+## Debug Mode
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| Debug | false | Enables console logs for weather updates and sync events. |
+
+When enabled, the script prints useful logs for troubleshooting and development.
