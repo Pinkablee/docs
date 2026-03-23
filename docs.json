@@ -88,8 +88,8 @@
   "navbar": {
     "links": [
       {
-        "label": "Email support",
-        "href": "mailto:support@pinkable.dev"
+        "label": "Support",
+        "href": "https://discord.gg/pinkable"
       }
     ],
     "primary": {
