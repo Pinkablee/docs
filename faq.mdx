@@ -4,43 +4,166 @@ description: "Common questions about pinkable.dev FiveM resources"
 ---
 
 <AccordionGroup>
-  <Accordion title="Do I need a FiveM Keymaster license to use these resources?">
-    Yes. All pinkable.dev resources are protected using FiveM's Asset Escrow
-    system. Your server must run with a valid **Cfx.re Keymaster license key**.
-    The license key must belong to the **same FiveM account that owns the
-    purchased asset**. If the accounts do not match, the resource will fail
-    to start.
+  <Accordion title="Do all pinkable.dev resources use FiveM Asset Escrow?">
+    No. **Only paid releases** use FiveM's Asset Escrow system.
+
+    **Free releases are fully open-source** and do not require any
+    FiveM Keymaster ownership or escrow permissions to run.
+
+    **Paid releases**, however, are protected using FiveM Asset Escrow
+    and require proper ownership through your Cfx.re account.
   </Accordion>
 
-  <Accordion title="Why am I getting the 'missing entitlement' error?">
-    This usually happens when your server license key is tied to a different
-    FiveM account than the one that owns the resource. To resolve this, either
-    run the server using the correct account's license key or transfer the
-    asset to the account that owns the key through the
+  <Accordion title="Do I need a Keymaster license key to use paid resources?">
+    Yes. Paid resources require your server to run with a valid
+    **Cfx.re Keymaster license key**.
+
+    The license key must belong to the **same FiveM account that owns
+    the purchased resource**. If the accounts do not match, the resource
+    will not start.
+  </Accordion>
+
+  <Accordion title="Why am I getting a 'missing entitlement' error?">
+    This error only applies to **paid escrowed resources**.
+
+    It usually happens when your server license key is tied to a
+    different FiveM account than the one that owns the resource.
+
+    To fix this:
+
+    • Make sure your server is using the correct license key  
+    • Verify the resource was purchased on the correct account  
+    • Transfer ownership if necessary using the  
+    [Keymaster asset grants page](https://keymaster.fivem.net/asset-grants)
+  </Accordion>
+
+  <Accordion title="Can I transfer a paid resource to another account?">
+    Yes. FiveM allows **one transfer per asset**.
+
+    You can transfer ownership through the
     [Keymaster asset grants page](https://keymaster.fivem.net/asset-grants).
+
+    After the transfer is completed, the new account will own the resource.
   </Accordion>
 
-  <Accordion title="Is it possible to move a purchased asset to another account?">
-    Yes. FiveM allows a **single transfer per asset**. You can initiate this
-    through the [Keymaster](https://keymaster.fivem.net/asset-grants) by opening
-    your purchased assets list, selecting the resource, and choosing the
-    transfer option. After the transfer is completed, ownership will be moved
-    to the selected account.
+  <Accordion title="Where do I download my purchases?">
+    Paid resources can be downloaded from the platform where you
+    purchased the resource.
+
+    After purchasing, the resource will appear in your **Keymaster**
+    or purchase dashboard depending on the distribution method.
+
+    If you cannot locate your download, contact support with:
+
+    • Your purchase email  
+    • Resource name  
+    • Purchase confirmation (if available)
+  </Accordion>
+
+  <Accordion title="How do I install a resource?">
+    Installing a resource is simple and follows standard FiveM setup.
+
+    Basic steps:
+
+    1. Download the resource  
+    2. Place the folder inside your server's `resources` directory  
+    3. Add the resource to your `server.cfg`
+
+    Example:
+
+    ensure resource_name
+
+    Detailed setup instructions are always included inside each
+    resource's documentation page.
+  </Accordion>
+
+  <Accordion title="Do your scripts support ESX, QB, or Standalone servers?">
+    Most pinkable.dev resources are designed to support:
+
+    • **ESX**  
+    • **QB-Core**  
+    • **Standalone servers**
+
+    Compatibility details are listed on each product page.
+
+    Always check the **Requirements** section of the documentation
+    before installing.
+  </Accordion>
+
+  <Accordion title="How do updates work?">
+    Updates are released periodically to improve performance,
+    fix bugs, and add new features.
+
+    For **free releases**, updates are available directly
+    through the documentation or repository.
+
+    For **paid releases**, updates are provided through the
+    same platform where the resource was purchased.
+
+    Keeping your resources updated is recommended to ensure
+    stability and compatibility.
+  </Accordion>
+
+  <Accordion title="Do you offer custom development?">
+    Yes. Custom development may be available depending on
+    availability and project scope.
+
+    Custom work may include:
+
+    • Feature development  
+    • System integrations  
+    • Performance optimization  
+    • Full resource creation
+
+    To request custom work, open a ticket in the Discord
+    with details about your project.
   </Accordion>
 
   <Accordion title="Where can I get help if something isn't working?">
-    Support is available through our official channels. You can open a support
-    ticket or join the community Discord. When requesting help, please include
-    useful details such as your order information, the resource name, and your
-    server setup to speed up troubleshooting.
+    Support is available through our official channels.
+
+    You can:
+
+    • Open a support ticket in the Discord  
+    • Review documentation guides  
+    • Check the FAQ for common fixes  
+
+    When requesting help, include:
+
+    • Resource name  
+    • Error messages  
+    • Server framework  
+    • Relevant screenshots
   </Accordion>
 
   <Accordion title="Are refunds available for purchases?">
-    Refunds may be available depending on eligibility. Please review the
-    **Refund Policy** for full details on requirements and the process for
-    submitting a request.
+    **No refunds are provided** for any purchases.
+
+    All sales are considered **final**.
+
+    Please review the product description, requirements,
+    and documentation carefully before purchasing.
+
+    If you have questions about compatibility or setup,
+    contact support before buying.
+  </Accordion>
+
+  <Accordion title="Are free resources supported?">
+    Yes. Free releases are supported, but **priority support
+    is given to paid customers**.
+
+    Free resources include documentation and community
+    support through Discord.
+  </Accordion>
+
+  <Accordion title="Do free resources receive updates?">
+    Yes. Free resources may receive updates, improvements,
+    and bug fixes over time.
+
+    However, update frequency may vary depending on
+    development priorities and paid project workload.
   </Accordion>
 </AccordionGroup>
 
-If you still need assistance, you can review additional troubleshooting guides
-or contact our support team directly.
+If you still need assistance, visit the official **pinkable.dev Discord**
+or open a support ticket and our team will help you troubleshoot.
