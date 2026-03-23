@@ -24,30 +24,39 @@
             ]
           },
           {
-            "group": "Discord Integration",
+            "group": "Free Releases",
             "pages": [
-              "products/px-discord/configuration",
-              "products/px-discord/exports",
-              "products/px-discord/overview",
-              "products/px-discord/setup"
+              {
+                "group": "Discord Integration",
+                "pages": [
+                  "products/free/px-discord/overview",
+                  "products/free/px-discord/setup",
+                  "products/free/px-discord/configuration",
+                  "products/free/px-discord/exports"
+                ]
+              },
+              {
+                "group": "Vehicle Spawner",
+                "pages": [
+                  "products/free/px-spawn/overview",
+                  "products/free/px-spawn/setup",
+                  "products/free/px-spawn/configuration"
+                ]
+              },
+              {
+                "group": "Climate Control",
+                "pages": [
+                  "products/free/px-climate/overview",
+                  "products/free/px-climate/setup",
+                  "products/free/px-climate/configuration",
+                  "products/free/px-climate/exports"
+                ]
+              }
             ]
           },
           {
-            "group": "Vehicle Spawner",
-            "pages": [
-              "products/px-spawn/configuration",
-              "products/px-spawn/overview",
-              "products/px-spawn/setup"
-            ]
-          },
-          {
-            "group": "Climate Control",
-            "pages": [
-              "products/px-climate/configuration",
-              "products/px-climate/exports",
-              "products/px-climate/overview",
-              "products/px-climate/setup"
-            ]
+            "group": "Paid Releases",
+            "pages": []
           }
         ]
       }
