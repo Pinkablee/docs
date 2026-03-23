@@ -1,0 +1,41 @@
+---
+title: "Overview"
+description: "Overview of the px_discord system"
+---
+
+px_discord is a real-time Discord integration system designed to handle identifier validation, guild membership checks, and role-based access control without manual intervention or unreliable client-side logic.
+
+It connects directly to your configured Discord bot and guild, retrieves player membership data, and validates roles securely before allowing access. Everything is handled centrally on the server, ensuring every connection follows the same validation process.
+
+Role data is cached after retrieval, which reduces repeated API requests and keeps validation fast even during heavy player activity.
+
+![px_discord preview](/images/discord.png)
+
+<Note>
+  px_discord does not rely on client-side logic. Discord validation and role checks are handled entirely on the server, ensuring consistent and secure behavior for every player.
+</Note>
+
+## What it handles
+
+- Discord identifier validation during player connection  
+- Guild membership verification using your configured server  
+- Optional role-based access control for whitelisting  
+- Cached role handling for improved performance  
+- Automatic retry handling when Discord requests fail  
+
+## Why use it
+
+Many Discord validation systems rely on client-side checks or repeated API calls, which can introduce security risks, slowdowns, or inconsistent behavior between players.
+
+px_discord avoids these issues by keeping all validation logic server-side and caching Discord data efficiently. This keeps the system predictable, secure, and scalable regardless of player count or connection load.
+
+## Navigation
+
+<CardGroup cols={2}>
+  <Card title="Configuration" icon="sliders" href="/products/px-discord/configuration">
+    Control how Discord validation and access rules behave.
+  </Card>
+  <Card title="Exports" icon="code" href="/products/px-discord/exports">
+    Retrieve Discord data and validate roles in other resources.
+  </Card>
+</CardGroup>

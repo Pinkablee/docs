@@ -1,0 +1,97 @@
+---
+title: "Exports"
+description: "Server exports available in px_discord"
+---
+
+px_discord exposes a small set of server-side exports for retrieving cached Discord member data, role information, and guild validation state.
+
+These exports are available server-side only, making it easy to integrate Discord-based permissions into any resource while keeping validation secure and consistent.
+
+---
+
+## Export Reference
+
+| Export | Returns | Description |
+|--------|--------|-------------|
+| GetMember | table \| false | Returns the cached Discord member data for the player. |
+| GetRoles | table \| false | Returns cached Discord role IDs assigned to the player. |
+| HasRole | boolean | Checks whether the player has a specific role or role list. |
+| GetDisplayName | string \| false | Returns the player's Discord display name or nickname. |
+| GetAvatar | string \| false | Returns the player's Discord avatar URL when available. |
+| IsInGuild | boolean | Returns whether the player is in the configured guild. |
+| RefreshMember | boolean, table \| false | Refreshes Discord member data and updates the cache. |
+
+---
+
+## Usage
+
+Use the exports object from px_discord to access Discord validation data:
+
+```lua
+local discord = exports.px_discord
+
+-- Get cached member data
+local member = discord:GetMember(source)
+
+-- Get player roles
+local roles = discord:GetRoles(source)
+
+-- Check a single role
+local hasRole = discord:HasRole(
+    source,
+    '123456789012345678'
+)
+
+-- Check multiple roles (any)
+local hasAny = discord:HasRole(
+    source,
+    {
+        '123456789012345678',
+        '987654321098765432'
+    }
+)
+
+-- Check multiple roles (all)
+local hasAll = discord:HasRole(
+    source,
+    {
+        '123456789012345678',
+        '987654321098765432'
+    },
+    true
+)
+
+-- Get display name
+local name = discord:GetDisplayName(source)
+
+-- Get avatar URL
+local avatar = discord:GetAvatar(source)
+
+-- Check guild membership
+local inGuild = discord:IsInGuild(source)
+
+-- Refresh Discord member cache
+discord:RefreshMember(
+    source,
+    function(success, payload, reason)
+        if success then
+            print(payload.discordId)
+            return
+        end
+
+        print(reason)
+    end
+)
+
+-- Returned structure example
+-- member.discordId
+-- member.displayName
+-- member.roles
+-- member.avatar
+-- member.inGuild
+
+-- Notes
+-- All values are retrieved from cached Discord member data.
+-- Exports always return the latest known cached state.
+-- Safe to call at any time, including during player connection.
+-- No dependency on client-side logic.

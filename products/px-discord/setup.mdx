@@ -1,0 +1,81 @@
+---
+title: "Setup"
+description: "How to set up px_discord on your server"
+---
+
+Getting px_discord running is straightforward and only requires basic Discord bot configuration.
+
+## Requirements
+
+- A working FiveM server  
+- Basic access to your server files and `server.cfg`  
+- A Discord bot token  
+- Your Discord guild (server) ID  
+
+No external frameworks or additional resources are required.
+
+---
+
+## Setup
+
+1. Download the `px_discord` resource.
+
+2. Place the folder into your server’s resources directory.
+
+   Example structure:  
+   resources/px_discord
+
+3. Open your `server.cfg` and add the resource:
+
+   ensure px_discord
+
+4. Restart your server or run a refresh and start the resource manually.
+
+---
+
+## Configuration
+
+All behavior is controlled inside:
+
+config/shared.lua
+
+This includes your Discord bot token, guild ID, connection validation settings, and optional role-based access control.
+
+At minimum, configure:
+
+- BotToken  
+- GuildId  
+
+The default values are already structured for a working setup once valid credentials are added.
+
+---
+
+## How it starts
+
+When the resource loads:
+
+- Discord configuration values are validated  
+- Guild connectivity is checked  
+- Player Discord identifiers are detected automatically  
+- Member data is fetched and cached  
+- Optional role validation is applied during connection  
+
+No manual interaction is needed after startup.
+
+---
+
+## Troubleshooting
+
+If the resource does not behave as expected:
+
+- Make sure the resource name is exactly `px_discord`  
+- Confirm your bot token is valid  
+- Verify the bot is inside your Discord guild  
+- Ensure the bot has permission to view server members  
+- Check your server console for debug logs (enable Debug in config if needed)  
+
+---
+
+## Next step
+
+Adjust behavior and fine-tune validation settings in the Configuration section.

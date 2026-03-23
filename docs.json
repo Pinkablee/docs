@@ -24,6 +24,15 @@
             ]
           },
           {
+            "group": "Discord Integration",
+            "pages": [
+              "products/px-discord/configuration",
+              "products/px-discord/exports",
+              "products/px-discord/overview",
+              "products/px-discord/setup"
+            ]
+          },
+          {
             "group": "Vehicle Spawner",
             "pages": [
               "products/px-spawn/configuration",

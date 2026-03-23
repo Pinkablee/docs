@@ -1,0 +1,124 @@
+---
+title: "Configuration"
+description: "Customize px_discord connection and validation behavior"
+---
+
+px_discord is designed to be plug-and-play with minimal setup.
+
+All configuration is handled through:
+
+config/shared.lua
+
+This file controls how Discord connections are handled, how roles are validated, and how access permissions are enforced across players.
+
+Once installed, simply start the resource:
+
+ensure px_discord
+
+Everything else is handled automatically by the system.
+
+---
+
+## Core Settings
+
+These values define how px_discord connects to Discord and validates player permissions.
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| Token | '' | Discord bot token used to authenticate API requests. |
+| GuildId | '' | Discord server (guild) ID used for role validation. |
+| RequestTimeoutMs | 5000 | Maximum time allowed for Discord API responses before retrying. |
+| CacheDurationSeconds | 300 | How long Discord role data is stored before refreshing. |
+
+---
+
+## Role Gate
+
+px_discord supports optional role-based access control to restrict server entry.
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| Enabled | false | Enables Discord role validation before allowing players to connect. |
+| Mode | 'any' | Determines whether players must have **any** or **all** listed roles. |
+| RoleIds | {} | Discord role IDs used for validation checks. |
+| DenyMessage | 'You do not have the required Discord role to join this server.' | Message shown when access is denied. |
+
+### Role Mode Behavior
+
+When **Mode = 'any'**:
+
+- Player must have **at least one** listed role  
+- Most common setup  
+- Suitable for verification or membership systems  
+
+When **Mode = 'all'**:
+
+- Player must have **every** listed role  
+- Used for strict permission environments  
+- Suitable for private or staff-only servers  
+
+---
+
+## How It Works
+
+The system runs entirely server-side and handles all Discord communication securely.
+
+### Connection Flow
+
+- The resource initializes using your configured Discord bot token  
+- Guild validation ensures the bot is connected to the correct server  
+- Player Discord identifiers are detected automatically  
+- Role data is requested and validated against configured requirements  
+
+### Role Validation Flow
+
+- Discord roles are fetched using secure API requests  
+- Role data is cached to reduce unnecessary requests  
+- Players are approved or denied based on configured role logic  
+- Access decisions are handled entirely server-side  
+
+### Permission Handling
+
+- All validation runs before player access is granted  
+- No client-side role checks are required  
+- Permissions stay consistent across reconnects  
+
+---
+
+## Fallback Behavior
+
+If the Discord API fails or returns invalid data:
+
+- Cached role data is used when available  
+- Players are temporarily restricted if validation cannot be completed  
+- The system retries automatically on the next request cycle  
+
+On initial startup, the system verifies configuration values before allowing connections.
+
+---
+
+## Performance
+
+px_discord is designed to remain lightweight and efficient.
+
+- Role data is cached to reduce API usage  
+- Requests are interval-based, not constant  
+- Minimal memory usage during validation  
+- Fully server-driven logic with optimized handling  
+
+---
+
+## Debug Mode
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| Debug | false | Enables console logging for Discord connection and role validation events. |
+
+When enabled, the script prints useful logs for:
+
+- Discord connection checks  
+- Role validation results  
+- Access decisions  
+- API response handling  
+
+This mode is recommended during setup and testing.
