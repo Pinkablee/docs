@@ -69,9 +69,9 @@
           "icon": "globe"
         },
         {
-          "anchor": "Support",
-          "href": "https://discord.gg/pinkable",
-          "icon": "headset"
+          "anchor": "Store",
+          "href": "https://store.pinkable.dev",
+          "icon": "cart-shopping"
         },
         {
           "anchor": "Discord",
@@ -114,7 +114,8 @@
     "socials": {
       "discord": "https://discord.gg/pinkable",
       "github": "https://github.com/pinkablee",
-      "website": "https://pinkable.dev"
+      "website": "https://pinkable.dev",
+      "store": "https://store.pinkable.dev"
     }
   }
 }
