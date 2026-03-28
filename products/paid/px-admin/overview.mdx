@@ -1,0 +1,64 @@
+
+---
+title: "Overview"
+description: "Overview of the px_admin system"
+---
+
+px_admin is a modern administrative control system designed to give staff powerful moderation tools while maintaining stability, security, and accountability across your server.
+
+It centralizes all moderation features into a single structured system, allowing administrators to manage players, enforce rules, and respond to reports without relying on scattered scripts or unreliable commands. Every action is validated through permissions and logged for transparency.
+
+All major moderation features — including kicking, banning, reviving, freezing, spectating, and handling reports — are processed server-side to ensure consistent behavior and prevent unauthorized usage.
+
+px_admin is built to scale, making it suitable for both small communities and large production roleplay servers.
+
+![px_admin preview](/images/admin.png)
+
+<Note>
+  px_admin validates permissions server-side before executing any action. This ensures that unauthorized users cannot trigger admin functions or bypass restrictions.
+</Note>
+
+## What it handles
+
+- Player moderation tools (kick, ban, revive, freeze, spectate)  
+- Offline banning and ban management  
+- Admin session handling and teleportation tools  
+- Report system for player support and moderation  
+- Permission validation using Discord roles or ACE permissions  
+- Cooldown protection to prevent abuse of admin actions  
+- Detailed webhook logging for moderation tracking  
+- Screenshot capture tools for evidence collection  
+
+## Why use it
+
+Many admin systems rely on outdated command structures or poorly secured client-side logic, which can lead to abuse, inconsistent permissions, or unreliable moderation tools.
+
+px_admin avoids these issues by:
+
+- Running critical logic server-side  
+- Enforcing permission validation on every action  
+- Logging moderation activity automatically  
+- Providing configurable cooldown protection  
+- Supporting both Discord-based and ACE-based permissions  
+
+This results in a system that stays reliable, secure, and predictable — even under heavy player load or extended server sessions.
+
+## Navigation
+
+<CardGroup cols={2}>
+  <Card title="Configuration" icon="sliders" href="/products/px-admin/configuration">
+    Customize actions, permissions, cooldowns, and integrations.
+  </Card>
+
+  <Card title="Permissions" icon="shield" href="/products/px-admin/permissions">
+    Learn how to configure Discord roles and ACE permissions.
+  </Card>
+
+  <Card title="Commands" icon="terminal" href="/products/px-admin/commands">
+    View available commands and how to use them.
+  </Card>
+
+  <Card title="Troubleshooting" icon="wrench" href="/products/px-admin/troubleshooting">
+    Resolve common issues and configuration problems.
+  </Card>
+</CardGroup>

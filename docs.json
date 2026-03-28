@@ -56,7 +56,18 @@
           },
           {
             "group": "Paid Releases",
-            "pages": []
+            "pages": [
+              {
+                "group": "Admin Menu",
+                "pages": [
+                  "products/paid/px-admin/overview",
+                  "products/paid/px-admin/setup",
+                  "products/paid/px-admin/configuration",
+                  "products/paid/px-admin/features",
+                  "products/paid/px-admin/troubleshooting"
+                ]
+              }
+            ]
           }
         ]
       }

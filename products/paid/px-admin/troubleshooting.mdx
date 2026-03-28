@@ -1,0 +1,86 @@
+---
+title: "Troubleshooting"
+description: "Common issues and solutions for px_admin"
+---
+
+This section covers common problems and how to fix them.
+
+---
+
+## Admin Menu Will Not Open
+
+Possible causes:
+
+- Missing permissions  
+- Incorrect configuration  
+- Resource not started  
+
+Fix:
+
+- Verify permissions are granted  
+- Confirm px_admin is started  
+- Check console for errors  
+
+---
+
+## Actions Not Working
+
+Possible causes:
+
+- Missing permissions  
+- Revive system misconfigured  
+- Cooldown restrictions active  
+
+Fix:
+
+- Verify permission flags  
+- Check revive settings  
+- Review cooldown values  
+
+---
+
+## Bans Not Applying
+
+Possible causes:
+
+- Database or storage issues  
+- Incorrect configuration  
+- Permission restrictions  
+
+Fix:
+
+- Verify ban permissions  
+- Check console logs  
+- Restart resource  
+
+---
+
+## Webhooks Not Sending
+
+Possible causes:
+
+- Invalid webhook URL  
+- Network issues  
+- Missing configuration  
+
+Fix:
+
+- Verify webhook URLs  
+- Check server logs  
+- Ensure webhooks are enabled  
+
+---
+
+## Debug Mode
+
+If problems continue, enable Debug mode.
+
+Inside:
+
+config/settings.lua
+
+Set:
+
+Debug = true
+
+This will print useful information to the server console.

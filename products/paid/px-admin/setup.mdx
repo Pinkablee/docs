@@ -1,0 +1,186 @@
+
+---
+title: "Setup"
+description: "How to set up px_admin on your server"
+---
+
+Getting px_admin running is straightforward and does not require complex setup.
+
+The system is designed to work out-of-the-box using either Discord-based permissions or ACE permissions.
+
+## Requirements
+
+- A working FiveM server  
+- Basic access to your server files and `server.cfg`  
+- Permission system (Discord roles **or** ACE permissions)  
+
+Required Resources:
+
+- screencapture (https://github.com/itschip/screencapture)
+
+Conditional Requirements:
+
+- MugShotBase64 (https://github.com/BaziForYou/MugShotBase64)  
+  Required when Discord permissions are **disabled**.  
+  Used to generate player mugshot images when Discord avatars are not available.
+
+Optional:
+
+- Discord bot (only required if using Discord role permissions)  
+- Webhook URLs (recommended for moderation logging)
+
+---
+
+## Setup
+
+1. Download the `px_admin` resource.
+
+2. Place the folder into your server’s resources directory.
+
+   Example structure:  
+   resources/px_admin
+
+3. Open your `server.cfg` and add the resource:
+
+   ensure px_admin
+
+4. Restart your server or run a refresh and start the resource manually.
+
+---
+
+## Initial Configuration
+
+All behavior is controlled inside:
+
+config/
+
+Before using px_admin, you should review the following files:
+
+### settings.lua
+
+This file controls permissions and debug behavior.
+
+If using ACE permissions:
+
+- Leave `Discord.enabled` set to `false`
+- Add ACE permissions in your `server.cfg`
+
+Example:
+
+add_ace group.admin px_admin.open allow  
+add_ace group.admin px_admin.kick allow  
+add_ace group.admin px_admin.ban allow  
+add_ace group.admin px_admin.revive allow  
+
+If using Discord permissions:
+
+- Set `Discord.enabled` to `true`
+- Enter your:
+  - Discord Bot Token  
+  - Guild ID  
+  - Role IDs  
+
+---
+
+### actions.lua
+
+This file controls how admin actions behave.
+
+Important settings include:
+
+- Session teleport location  
+- Revive system type  
+- Action cooldown protection  
+
+If your server uses a custom revive system, configure:
+
+reviveType  
+reviveEvent  
+reviveExportResource  
+reviveExportName  
+
+These values allow px_admin to work with nearly any framework.
+
+---
+
+### webhooks.lua (Optional)
+
+Webhook logging is recommended for moderation tracking.
+
+Add your Discord webhook URLs for:
+
+- Kicks  
+- Bans  
+- Reports  
+- Revives  
+- Screenshots  
+- Other admin actions  
+
+If left empty, logging will simply be skipped.
+
+---
+
+### language.lua
+
+This file controls kick and ban messages shown to players.
+
+You can customize:
+
+- Kick messages  
+- Ban messages  
+- Rejection messages  
+- Permanent ban messages  
+
+These support dynamic placeholders such as:
+
+{ADMIN}  
+{REASON}  
+{DISCORD}  
+{EXPIRATION}  
+
+---
+
+## How it starts
+
+When the resource loads:
+
+- Configuration files are loaded  
+- Permission system initializes  
+- Admin systems register events  
+- Webhook logging becomes available  
+- Cooldown tracking starts  
+- Admin menu becomes accessible to authorized users  
+
+No additional manual setup is required after startup.
+
+---
+
+## Troubleshooting
+
+If the resource does not behave as expected:
+
+- Make sure the resource name is exactly `px_admin`  
+- Confirm it is started after required dependencies  
+- Verify permissions are properly configured  
+- Check your server console for debug logs  
+- Enable Debug in `settings.lua` if needed  
+
+Common issues:
+
+**Admin menu will not open**
+- Check ACE permissions or Discord role configuration  
+- Verify correct permission flags are assigned  
+
+**Actions not working**
+- Confirm revive settings match your framework  
+- Verify permission access is granted  
+
+**Webhooks not sending**
+- Ensure webhook URLs are valid  
+- Check server console for webhook errors  
+
+---
+
+## Next step
+
+Customize permissions, actions, and logging behavior in the Configuration section.

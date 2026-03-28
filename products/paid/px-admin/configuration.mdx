@@ -1,0 +1,297 @@
+---
+title: "Configuration"
+description: "Customize px_admin behavior, permissions, actions, and integrations"
+---
+
+px_admin is designed to be flexible, modular, and fully configurable while remaining easy to deploy.
+
+All configuration files are located inside:
+
+config/
+
+Each file controls a different part of the admin system, allowing you to customize behavior without modifying core code.
+
+Once installed, simply start the resource:
+
+ensure px_admin
+
+Everything else is handled through configuration.
+
+---
+
+## Configuration Files
+
+px_admin uses multiple configuration files to keep settings clean, modular, and easy to maintain.
+
+| File | Purpose |
+|------|--------|
+| config/actions.lua | Controls revive behavior, session teleport locations, and action cooldowns. |
+| config/settings.lua | Controls debug settings, Discord permissions, and ACE fallback permissions. |
+| config/language.lua | Controls all kick, ban, and connection messages shown to players. |
+| config/webhooks.lua | Controls Discord logging for admin actions and reports. |
+
+Each file is independent, allowing server owners to customize only what they need.
+
+---
+
+## Actions Configuration
+
+File:
+
+config/actions.lua
+
+This file controls how admin actions behave, including revive systems and cooldown protections.
+
+### Session Coordinates
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| SessionCoords | vec4(132.0, -637.0, 262.9, 152.6) | Default teleport location used for reports and admin sessions. |
+
+This location is used when:
+
+- Assisting reports  
+- Moving players into controlled admin areas  
+- Handling session-based moderation  
+
+---
+
+### Revive System
+
+px_admin supports multiple revive methods for compatibility with different frameworks.
+
+| Setting | Description |
+|--------|-------------|
+| reviveType | Defines how revive actions are triggered (`event` or `export`). |
+| reviveEvent | Event name used when reviveType is set to `event`. |
+| reviveExportResource | Resource name used when reviveType is set to `export`. |
+| reviveExportName | Export function name used when reviveType is set to `export`. |
+
+This allows px_admin to work with:
+
+- ESX revive systems  
+- QBCore revive systems  
+- Custom revive systems  
+
+---
+
+### Cooldown System
+
+Cooldowns help prevent abuse of powerful admin actions.
+
+| Action | Default Scope | Description |
+|-------|---------------|-------------|
+| freeze | target | Prevents repeatedly freezing the same player. |
+| kill | target | Prevents repeated kill abuse. |
+| revive | target | Prevents revive spam. |
+| wipe | global | Prevents repeated entity wipes server-wide. |
+
+Each cooldown includes:
+
+| Setting | Description |
+|--------|-------------|
+| seconds | Duration before the action can be used again. |
+| scope | Defines whether cooldown applies per-target or globally. |
+
+---
+
+## Settings Configuration
+
+File:
+
+config/settings.lua
+
+This file controls permissions, debug logging, and Discord integration.
+
+---
+
+### Debug Mode
+
+| Setting | Default | Description |
+|--------|--------|-------------|
+| Debug | false | Enables debug logs in the server console. |
+
+When enabled, useful logs are printed for:
+
+- Permission checks  
+- Admin actions  
+- Report handling  
+- Error tracking  
+
+---
+
+## Permission System
+
+px_admin supports two permission methods.
+
+### Discord Role Permissions
+
+When enabled, permissions are handled through Discord roles.
+
+| Setting | Description |
+|--------|-------------|
+| enabled | Enables Discord role permissions. |
+| botToken | Discord bot token used for API authentication. |
+| guildId | Discord server ID used for role lookups. |
+| inviteLink | Discord invite shown in fallback messages. |
+
+Permissions are mapped per Discord role ID.
+
+Example permissions include:
+
+- open  
+- kick  
+- ban  
+- offlineban  
+- unban  
+- editban  
+- teleport  
+- spectate  
+- freeze  
+- revive  
+- kill  
+- screenshot  
+- invisibility  
+- godmode  
+- noclip  
+- nametags  
+- wipe  
+- reports  
+
+Each permission can be individually enabled or disabled.
+
+---
+
+### ACE Permission Fallback
+
+If Discord permissions are disabled, ACE permissions are used automatically.
+
+| Permission | ACE Example |
+|-----------|-------------|
+| open | px_admin.open |
+| kick | px_admin.kick |
+| ban | px_admin.ban |
+| revive | px_admin.revive |
+| wipe | px_admin.wipe |
+| reports | px_admin.reports |
+
+These permissions must be granted in:
+
+server.cfg
+
+Example:
+
+add_ace group.admin px_admin.open allow
+
+---
+
+## Language Configuration
+
+File:
+
+config/language.lua
+
+This file controls all kick, ban, and rejection messages.
+
+These messages support placeholders for dynamic values.
+
+### Supported Placeholders
+
+| Placeholder | Description |
+|-------------|-------------|
+| {ADMIN} | Admin who performed the action. |
+| {REASON} | Reason provided by staff. |
+| {DISCORD} | Player Discord ID. |
+| {EXPIRATION} | Ban expiration time. |
+
+Messages include:
+
+| Message | Description |
+|--------|-------------|
+| kicked | Message shown when a player is kicked. |
+| banned | Message shown when a player is banned. |
+| reject | Message shown when a banned player connects. |
+| reject_permanent | Message shown for permanent bans. |
+
+These messages can be fully customized to match your server branding.
+
+---
+
+## Webhook Configuration
+
+File:
+
+config/webhooks.lua
+
+This file controls Discord logging for admin activity.
+
+Each action uses its own webhook for better organization.
+
+| Webhook | Description |
+|--------|-------------|
+| kicks | Logs player kick actions. |
+| bans | Logs player bans. |
+| offlineBans | Logs offline bans. |
+| unbans | Logs unban actions. |
+| banEdited | Logs ban modifications. |
+| reports | Logs new reports. |
+| assistedReports | Logs report assistance actions. |
+| closedReports | Logs closed reports. |
+| revived | Logs revive actions. |
+| killed | Logs kill actions. |
+| freezed | Logs freeze actions. |
+| screenshots | Logs screenshot captures. |
+
+Separate webhooks allow server owners to:
+
+- Route logs into different channels  
+- Monitor staff activity  
+- Track moderation history  
+- Maintain accountability  
+
+---
+
+## How It Works
+
+px_admin loads all configuration files during resource startup.
+
+### Initialization Flow
+
+- Loads settings.lua for permissions and debug mode  
+- Loads actions.lua for behavior rules  
+- Loads language.lua for messaging  
+- Loads webhooks.lua for logging endpoints  
+
+All systems automatically respect configured values without requiring code changes.
+
+---
+
+## Performance
+
+px_admin is designed to remain efficient even on large servers.
+
+- Cooldown system prevents action spam  
+- Permission checks are lightweight  
+- Webhooks are triggered only when needed  
+- No unnecessary loops or background processing  
+
+---
+
+## Debugging
+
+When Debug is enabled:
+
+| Feature | Behavior |
+|--------|---------|
+| Permission checks | Logs permission validation results. |
+| Actions | Logs executed admin commands. |
+| Errors | Displays helpful debugging messages. |
+
+Debug mode is recommended during:
+
+- Initial setup  
+- Permission testing  
+- Feature validation  
+- Development environments  
+
+Disable debug mode in production for best performance.
