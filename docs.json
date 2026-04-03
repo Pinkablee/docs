@@ -36,14 +36,6 @@
                 ]
               },
               {
-                "group": "Vehicle Spawner",
-                "pages": [
-                  "products/free/px-spawn/overview",
-                  "products/free/px-spawn/setup",
-                  "products/free/px-spawn/configuration"
-                ]
-              },
-              {
                 "group": "Climate Control",
                 "pages": [
                   "products/free/px-climate/overview",
