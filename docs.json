@@ -4,9 +4,9 @@
   "name": "pinkable.dev",
   "description": "Official documentation for pinkable.dev FiveM resources, guides, and development tools.",
   "colors": {
-    "primary": "#204279",
-    "light": "#204279",
-    "dark": "#204279"
+    "primary": "#ff1e39",
+    "light": "#ff1e39",
+    "dark": "#ff1e39"
   },
   "favicon": "/favicon.svg",
   "navigation": {
